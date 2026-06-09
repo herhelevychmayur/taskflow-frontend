@@ -57,7 +57,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
         if (idFromToken) {
           // Fetch from /api/v1/users
-          const response = await fetch(`http://localhost:8080/api/v1/users/${idFromToken}`, {
+          const baseUrl = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8080/api/v1';
+          const response = await fetch(`${baseUrl}/users/${idFromToken}`, {
             headers: {
               'Authorization': `Bearer ${newToken}`,
               'Content-Type': 'application/json'
