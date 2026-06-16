@@ -767,7 +767,7 @@ export const ProjectDetailsPage = () => {
                                   : (inviteeUser || invite.inviteeId);
                               })()}
                             </p>
-                           <p className="text-xs text-gray-500">{t('status_label', { status: invite.status })}</p>
+                           <p className="text-xs text-gray-500">{t('status_label', { status: t(invite.status.toLowerCase()) })}</p>
                          </div>
                        </li>
                     ))}

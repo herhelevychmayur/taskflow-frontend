@@ -13,6 +13,11 @@
 @layer base {
   body {
     @apply bg-background text-foreground font-sans antialiased;
+    text-transform: uppercase;
+  }
+  
+  input, textarea {
+    text-transform: none;
   }
 }
 

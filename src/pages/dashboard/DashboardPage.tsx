@@ -417,7 +417,7 @@ export const DashboardPage = () => {
                           <tr key={u.id} className="hover:bg-slate-50">
                             <td className="p-4 font-medium">
                               <span className="block">{u.fullName || u.username}</span>
-                              <span className="text-xs text-gray-400">{u.username} ({u.role})</span>
+                              <span className="text-xs text-gray-400">{u.username} ({u.role === 'ROLE_SUPERADMIN' ? t('dashboard_admin') : u.role === 'ROLE_ADMIN' ? t('admin') : u.role === 'ROLE_USER' ? t('user') : t('member')})</span>
                             </td>
                             <td className="p-4 text-right flex justify-end gap-2">
                               {u.id !== currentUserId && (

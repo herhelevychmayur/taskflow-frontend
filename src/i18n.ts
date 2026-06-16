@@ -33,6 +33,7 @@ const resources = {
       "remove": "Remove",
       "admin": "Admin",
       "member": "Member",
+      "user": "User",
       "archive": "Archive",
       "unarchive": "Unarchive",
       "dashboard_admin": "System Superadmin",
@@ -45,6 +46,9 @@ const resources = {
       "invited_by": "Invited by: {{name}}",
       "accept": "Accept",
       "decline": "Decline",
+      "pending": "Pending",
+      "accepted": "Accepted",
+      "declined": "Declined",
       "total_projects": "Total Projects",
       "archived_projects": "Archived Projects",
       "total_users": "Total Users",
@@ -205,6 +209,7 @@ const resources = {
       "remove": "Вилучити",
       "admin": "Адміністратор",
       "member": "Учасник",
+      "user": "Користувач",
       "archive": "Архівувати",
       "unarchive": "Розархівувати",
       "dashboard_admin": "Системний суперадмін",
@@ -217,6 +222,9 @@ const resources = {
       "invited_by": "Запросив: {{name}}",
       "accept": "Прийняти",
       "decline": "Відхилити",
+      "pending": "В очікуванні",
+      "accepted": "Прийнято",
+      "declined": "Відхилено",
       "total_projects": "Всього проєктів",
       "archived_projects": "Архівні проєкти",
       "total_users": "Всього користувачів",
@@ -349,15 +357,21 @@ const resources = {
   }
 };
 
+const savedLng = localStorage.getItem('app_lng') || 'en';
+
 i18n
   .use(initReactI18next)
   .init({
     resources,
-    lng: "en", // default language
+    lng: savedLng, // default language from localStorage
     fallbackLng: "en",
     interpolation: {
       escapeValue: false 
     }
   });
+
+i18n.on('languageChanged', (lng) => {
+  localStorage.setItem('app_lng', lng);
+});
 
 export default i18n;
