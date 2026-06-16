@@ -26,7 +26,7 @@ export const DashboardPage = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const { userRole, userId: currentUserId } = useAuth();
-  
+
   const [projects, setProjects] = useState<Project[]>([]);
   const [invites, setInvites] = useState<ProjectMemberInviteResponse[]>([]);
   const [projectName, setProjectName] = useState('');
@@ -196,23 +196,21 @@ export const DashboardPage = () => {
           </span>
         )}
       </div>
-      
+
       {/* Role Tabs for Superadmin */}
       {userRole === 'ROLE_SUPERADMIN' && (
         <div className="flex gap-4 mb-6 border-b border-border">
           <button
             onClick={() => setActiveTab('my')}
-            className={`pb-2 px-1 font-semibold text-sm transition-colors border-b-2 ${
-              activeTab === 'my' ? 'border-primary text-primary' : 'border-transparent text-gray-500 hover:text-foreground'
-            }`}
+            className={`pb-2 px-1 font-semibold text-sm transition-colors border-b-2 ${activeTab === 'my' ? 'border-primary text-primary' : 'border-transparent text-gray-500 hover:text-foreground'
+              }`}
           >
             {t('my_projects')}
           </button>
           <button
             onClick={() => setActiveTab('admin')}
-            className={`pb-2 px-1 font-semibold text-sm transition-colors border-b-2 ${
-              activeTab === 'admin' ? 'border-primary text-primary' : 'border-transparent text-gray-500 hover:text-foreground'
-            }`}
+            className={`pb-2 px-1 font-semibold text-sm transition-colors border-b-2 ${activeTab === 'admin' ? 'border-primary text-primary' : 'border-transparent text-gray-500 hover:text-foreground'
+              }`}
           >
             {t('system_admin_panel')}
           </button>
@@ -245,12 +243,13 @@ export const DashboardPage = () => {
                         </div>
                       </CardHeader>
                       <CardContent>
-                        <p className={`text-sm normal-case ${proj.description ? 'text-gray-500' : 'text-gray-400 italic'}`}>
+                        <p className={`text-sm normal-case  ${proj.description ? 'text-gray-500' : 'text-gray-400 italic'}`}>
                           {proj.description || t('no_description')}
                         </p>
                       </CardContent>
                     </Card>
                   ))
+
                 )}
               </div>
             </div>
@@ -268,8 +267,8 @@ export const DashboardPage = () => {
                         <p className="text-sm text-gray-500 normal-case">
                           {(() => {
                             const inviterUser = usernamesMap[invite.inviterId] || invite.inviterUsername;
-                            const displayName = invite.inviterFullName 
-                              ? `${invite.inviterFullName}${inviterUser ? ` (${inviterUser})` : ''}` 
+                            const displayName = invite.inviterFullName
+                              ? `${invite.inviterFullName}${inviterUser ? ` (${inviterUser})` : ''}`
                               : (inviterUser || invite.inviterId);
                             return t('invited_by', { name: displayName });
                           })()}
