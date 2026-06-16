@@ -172,7 +172,7 @@ export const TaskDetailsPage = () => {
             <span>/</span>
             <span className="text-gray-500">{t('task')}</span>
           </div>
-          <h1 className="text-3xl font-bold text-foreground">
+          <h1 className="text-3xl font-bold text-foreground normal-case">
             {task.title}
           </h1>
         </div>
@@ -190,7 +190,7 @@ export const TaskDetailsPage = () => {
               <CardTitle>{t('description')}</CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-gray-700 whitespace-pre-wrap leading-relaxed">
+              <p className="text-gray-700 whitespace-pre-wrap leading-relaxed normal-case">
                 {task.description || <span className="italic text-gray-400">{t('no_description')}</span>}
               </p>
             </CardContent>
@@ -208,7 +208,7 @@ export const TaskDetailsPage = () => {
                   {comments.map(comment => (
                     <div key={comment.id} className="flex flex-col p-4 bg-slate-50 rounded-lg border border-border group">
                       <div className="flex justify-between items-center mb-2">
-                        <span className="font-semibold text-sm">
+                        <span className="font-semibold text-sm normal-case">
                           {comment.authorFullName ? `${comment.authorFullName} (${comment.authorUsername || ''})` : (comment.authorUsername || comment.authorId || 'Unknown')}
                         </span>
                         <div className="flex items-center gap-2">
@@ -224,7 +224,7 @@ export const TaskDetailsPage = () => {
                           )}
                         </div>
                       </div>
-                      <p className="text-sm text-gray-800 whitespace-pre-wrap">{comment.content}</p>
+                      <p className="text-sm text-gray-800 whitespace-pre-wrap normal-case">{comment.content}</p>
                     </div>
                   ))}
                 </div>
@@ -311,13 +311,13 @@ export const TaskDetailsPage = () => {
                   >
                     <option value="">{t('unassigned')}</option>
                     {members.map(m => (
-                      <option key={m.userId} value={m.userId}>
+                      <option key={m.userId} value={m.userId} className="normal-case">
                         {m.fullName ? `${m.fullName} (${m.username || ''})` : (m.username || m.userId)}
                       </option>
                     ))}
                   </select>
                 ) : (
-                  <div className="w-full h-10 rounded-md border border-border bg-gray-50 px-3 py-2 text-sm flex items-center">
+                  <div className="w-full h-10 rounded-md border border-border bg-gray-50 px-3 py-2 text-sm flex items-center normal-case">
                     {task.assigneeFullName 
                       ? `${task.assigneeFullName} (${task.assigneeUsername || ''})` 
                       : (task.assigneeUsername || (task.assigneeId ? `User: ${task.assigneeId}` : t('unassigned')))}
@@ -363,7 +363,7 @@ export const TaskDetailsPage = () => {
             <CardContent className="space-y-3 text-sm text-gray-600">
               <div className="flex justify-between">
                 <span>{t('creator_label')}</span>
-                <span className="font-medium text-gray-900">
+                <span className="font-medium text-gray-900 normal-case">
                   {task.creatorFullName ? `${task.creatorFullName} (${task.creatorUsername || ''})` : (task.creatorUsername || task.creatorId || 'Unknown')}
                 </span>
               </div>

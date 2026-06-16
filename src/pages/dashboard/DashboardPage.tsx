@@ -236,7 +236,7 @@ export const DashboardPage = () => {
                     <Card key={proj.id} className="hover:border-primary transition-colors cursor-pointer" onClick={() => navigate(`/projects/${proj.id}`)}>
                       <CardHeader>
                         <div className="flex items-center gap-2">
-                          <CardTitle className="text-lg">{proj.name}</CardTitle>
+                          <CardTitle className="text-lg normal-case">{proj.name}</CardTitle>
                           {proj.isArchived && (
                             <span className="px-2 py-0.5 text-xs font-semibold rounded-full bg-red-100 text-red-800">
                               {t('archived')}
@@ -245,7 +245,7 @@ export const DashboardPage = () => {
                         </div>
                       </CardHeader>
                       <CardContent>
-                        <p className={`text-sm ${proj.description ? 'text-gray-500' : 'text-gray-400 italic'}`}>
+                        <p className={`text-sm normal-case ${proj.description ? 'text-gray-500' : 'text-gray-400 italic'}`}>
                           {proj.description || t('no_description')}
                         </p>
                       </CardContent>
@@ -262,10 +262,10 @@ export const DashboardPage = () => {
                   {invites.filter(i => i.status === 'PENDING').map(invite => (
                     <Card key={invite.id}>
                       <CardHeader>
-                        <CardTitle className="text-lg">{invite.projectName}</CardTitle>
+                        <CardTitle className="text-lg normal-case">{invite.projectName}</CardTitle>
                       </CardHeader>
                       <CardContent>
-                        <p className="text-sm text-gray-500">
+                        <p className="text-sm text-gray-500 normal-case">
                           {(() => {
                             const inviterUser = usernamesMap[invite.inviterId] || invite.inviterUsername;
                             const displayName = invite.inviterFullName 
@@ -365,14 +365,14 @@ export const DashboardPage = () => {
                           <tr key={p.id} className="hover:bg-slate-50">
                             <td className="p-4 font-medium">
                               <div className="flex items-center gap-2">
-                                <span>{p.name}</span>
+                                <span className="normal-case">{p.name}</span>
                                 {p.isArchived && (
                                   <span className="px-2 py-0.5 text-xs font-semibold rounded-full bg-red-100 text-red-800">
                                     {t('archived')}
                                   </span>
                                 )}
                               </div>
-                              <span className="text-xs text-gray-400">{p.description || t('no_description')}</span>
+                              <span className="text-xs text-gray-400 normal-case">{p.description || t('no_description')}</span>
                             </td>
                             <td className="p-4 text-right flex justify-end gap-2">
                               <Button
@@ -416,8 +416,8 @@ export const DashboardPage = () => {
                         {allUsers.map(u => (
                           <tr key={u.id} className="hover:bg-slate-50">
                             <td className="p-4 font-medium">
-                              <span className="block">{u.fullName || u.username}</span>
-                              <span className="text-xs text-gray-400">{u.username} ({u.role === 'ROLE_SUPERADMIN' ? t('dashboard_admin') : u.role === 'ROLE_ADMIN' ? t('admin') : u.role === 'ROLE_USER' ? t('user') : t('member')})</span>
+                              <span className="block normal-case">{u.fullName || u.username}</span>
+                              <span className="text-xs text-gray-400 normal-case">{u.username} ({u.role === 'ROLE_SUPERADMIN' ? t('dashboard_admin') : u.role === 'ROLE_ADMIN' ? t('admin') : u.role === 'ROLE_USER' ? t('user') : t('member')})</span>
                             </td>
                             <td className="p-4 text-right flex justify-end gap-2">
                               {u.id !== currentUserId && (

@@ -280,10 +280,10 @@ export const ProjectDetailsPage = () => {
     <div className="container mx-auto p-4 py-8">
       <div className="flex items-center justify-between mb-6">
         <div>
-          <h1 className="text-3xl font-bold text-foreground">
+          <h1 className="text-3xl font-bold text-foreground normal-case">
             {project.name}
           </h1>
-          <p className={`mt-2 ${project.description ? 'text-gray-500' : 'text-gray-400 italic'}`}>
+          <p className={`mt-2 normal-case ${project.description ? 'text-gray-500' : 'text-gray-400 italic'}`}>
             {project.description || t('no_description')}
           </p>
           {userRole && (
@@ -505,7 +505,7 @@ export const ProjectDetailsPage = () => {
                       <li key={task.id} className="hover:bg-slate-50 transition-colors">
                         <Link to={`/projects/${project.id}/tasks/${task.id}`} className="p-4 flex items-center justify-between block">
                           <div>
-                            <p className="font-semibold text-lg">{task.title}</p>
+                            <p className="font-semibold text-lg normal-case">{task.title}</p>
                             <div className="flex gap-2 mt-2">
                               <span className={`px-2 py-0.5 text-xs font-medium rounded-md ${getStatusColor(task.status)}`}>
                                 {task.status === 'TODO' ? t('todo') : task.status === 'IN_PROGRESS' ? t('in_progress') : t('done')}
@@ -521,7 +521,7 @@ export const ProjectDetailsPage = () => {
                             </div>
                           </div>
                           <div className="text-right">
-                            <p className="text-sm text-gray-500">
+                            <p className="text-sm text-gray-500 normal-case">
                               {t('assignee_value', { name: task.assigneeFullName ? `${task.assigneeFullName} (${task.assigneeUsername || ''})` : t('unassigned') })}
                             </p>
                           </div>
@@ -547,7 +547,7 @@ export const ProjectDetailsPage = () => {
                   <ul className="divide-y divide-border border border-border rounded-md">
                     {members.map((member) => (
                       <li key={member.userId} className="p-4 bg-white">
-                        <p className="font-medium">
+                        <p className="font-medium normal-case">
                           {member.fullName ? `${member.fullName} (${member.username || ''})` : (member.username || member.userId)}
                         </p>
                         <p className="text-xs text-gray-500 mt-1 uppercase tracking-wide">{member.role === 'ROLE_ADMIN' ? t('admin') : t('member')}</p>
@@ -692,7 +692,7 @@ export const ProjectDetailsPage = () => {
                     {members.map((member) => (
                       <li key={member.userId} className="p-4 flex flex-col gap-3 bg-white">
                         <div>
-                          <p className="font-medium">
+                          <p className="font-medium normal-case">
                             {member.fullName ? `${member.fullName} (${member.username || ''})` : (member.username || member.userId)}
                           </p>
                           <p className="text-xs text-gray-500">{t('current_role', { role: member.role === 'ROLE_ADMIN' ? t('admin') : t('member') })}</p>
@@ -759,7 +759,7 @@ export const ProjectDetailsPage = () => {
                     {invites.map((invite) => (
                        <li key={invite.id} className="p-3 flex items-center justify-between bg-white">
                          <div>
-                            <p className="font-medium text-sm">
+                            <p className="font-medium text-sm normal-case">
                               {(() => {
                                 const inviteeUser = usernamesMap[invite.inviteeId] || invite.inviteeUsername;
                                 return invite.inviteeFullName 
