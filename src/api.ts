@@ -36,7 +36,7 @@ export const apiFetch = async (endpoint: string, options: RequestInit = {}) => {
           if (errorMessage === 'must not be blank') translatedMessage = i18n.t('val_not_blank');
           else if (errorMessage === 'must not be null') translatedMessage = i18n.t('val_not_null');
           else if (errorMessage === 'must not be empty') translatedMessage = i18n.t('val_not_empty');
-          else if (errorMessage === 'must contain only english letters') translatedMessage = i18n.t('val_pattern_letters');
+          else if (errorMessage === 'must contain only english letters' || errorMessage === 'must contain only english letters and numbers') translatedMessage = i18n.t('val_pattern_letters');
           else {
             const sizeMatch = errorMessage.match(/size must be between (\d+) and (\d+)/);
             if (sizeMatch) {
