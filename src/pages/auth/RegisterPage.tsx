@@ -56,7 +56,7 @@ export const RegisterPage = () => {
               type="text"
               value={username}
               onChange={(e: any) => setUsername(e.target.value)}
-              pattern="^[a-zA-Z]+$"
+              pattern="^[a-zA-Z0-9]+$"
               title={t('val_pattern_letters')}
               required
             />
