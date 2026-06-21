@@ -602,13 +602,13 @@ export const ProjectDetailsPage = () => {
                       </select>
                     </div>
                     <div>
-                      <label className="block text-sm font-medium mb-1">{t('assignee_label', 'Assignee')}</label>
+                      <label className="block text-sm font-medium mb-1">{t('assignee')}</label>
                       <select 
                         className="w-full h-10 rounded-md border border-border bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary"
                         value={newTaskAssigneeId}
                         onChange={(e: any) => setNewTaskAssigneeId(e.target.value)}
                       >
-                        <option value="">{t('unassigned', 'Unassigned')}</option>
+                        <option value="">{t('unassigned')}</option>
                         {members.map(m => (
                           <option key={m.userId} value={m.userId}>
                             {m.fullName ? `${m.fullName} (${m.username || ''})` : (m.username || m.userId)}
@@ -697,7 +697,7 @@ export const ProjectDetailsPage = () => {
                           </p>
                           <p className="text-xs text-gray-500">{t('current_role', { role: member.role === 'ROLE_ADMIN' ? t('admin') : t('member') })}</p>
                         </div>
-                        {member.userId !== members?.[0]?.userId && !project.isArchived && (
+                        {member.userId !== members?.[0]?.userId && member.userId !== currentUserId && !project.isArchived && (
                           <div className="flex gap-2 items-center w-full">
                             <select 
                               className="flex-1 h-9 rounded-md border border-border bg-white px-2 py-1 text-xs focus:outline-none focus:ring-2 focus:ring-primary"
